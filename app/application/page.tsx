@@ -1,6 +1,6 @@
 export default function AppPage() {
     return (
-      <div className="p-8">
+      <div className="relative min-h-screen p-8">
         <h1 className="text-4xl font-bold mb-6 bg-green-300 inline-block p-4 border-4 border-black">
           Welcome to Your Product Journey
         </h1>

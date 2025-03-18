@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from 'react';
-import { Menu, MessageSquare } from 'lucide-react';
+import { Menu, MessageSquare, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SignOutForm } from '@/components/auth/common/sign-out-form';
+import { handleSignOut } from '@/app/(auth)/actions/sign-out';
 
 export default function AppLayout({
   children,
@@ -17,11 +19,11 @@ export default function AppLayout({
       {/* Left Sidebar */}
       <div 
         className={cn(
-          "bg-gray-100 border-r-4 border-black transition-all duration-300",
+          "bg-gray-100 border-r-4 border-black transition-all duration-300 flex flex-col",
           sidebarOpen ? "w-64" : "w-0"
         )}
       >
-        <div className="p-4">
+        <div className="p-4 flex-1">
           <button 
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="bg-black text-white p-2 rounded-none hover:bg-gray-800"
@@ -39,6 +41,11 @@ export default function AppLayout({
               </a>
             ))}
           </nav>
+        </div>
+        
+        {/* Sign Out Button at Bottom */}
+        <div className="p-4">
+          <SignOutForm signOutAction={handleSignOut} />
         </div>
       </div>
 
