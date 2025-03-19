@@ -1,5 +1,3 @@
-'use client';
-
 import { useFormStatus } from 'react-dom';
 import { Button } from '@/components/ui/button';
 import { LoaderIcon } from 'lucide-react';
@@ -7,9 +5,11 @@ import { LoaderIcon } from 'lucide-react';
 export function SubmitButton({
   children,
   isSuccessful,
+  className, // Add className to props
 }: {
   children: React.ReactNode;
   isSuccessful: boolean;
+  className?: string; // Make className optional
 }) {
   const { pending } = useFormStatus();
 
@@ -18,7 +18,7 @@ export function SubmitButton({
       type={pending ? 'button' : 'submit'}
       aria-disabled={pending || isSuccessful}
       disabled={pending || isSuccessful}
-      className="relative"
+      className={`relative ${className}`} // Apply className here
     >
       {children}
 
