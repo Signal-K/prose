@@ -3,7 +3,7 @@ name: Build Next.js Application
 on:
   push:
     branches:
-      - '**' 
+      - '**'
   pull_request:
     branches:
       - '**'
@@ -20,11 +20,15 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Set POSTGRES_URL environment variable
+        run: echo "POSTGRES_URL=${{ secrets.POSTGRES_URL }}" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: yarn install
 
       - name: Build the app
         run: yarn build
+
       - name: Cache node modules
         uses: actions/cache@v3
         with:

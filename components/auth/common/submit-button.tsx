@@ -5,11 +5,11 @@ import { LoaderIcon } from 'lucide-react';
 export function SubmitButton({
   children,
   isSuccessful,
-  className, // Add className to props
+  className,
 }: {
   children: React.ReactNode;
   isSuccessful: boolean;
-  className?: string; // Make className optional
+  className?: string;
 }) {
   const { pending } = useFormStatus();
 
@@ -18,7 +18,7 @@ export function SubmitButton({
       type={pending ? 'button' : 'submit'}
       aria-disabled={pending || isSuccessful}
       disabled={pending || isSuccessful}
-      className={`relative ${className}`} // Apply className here
+      className={`relative ${className}`}
     >
       {children}
 
@@ -33,4 +33,4 @@ export function SubmitButton({
       </output>
     </Button>
   );
-}
+};
